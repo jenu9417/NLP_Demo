@@ -155,7 +155,7 @@ public class ComponentDemo {
 			Parser parser = ParserFactory.create(model);
 			Parse[] topParses = ParserTool.parseLine(input, parser, 1);
 			for (Parse p : topParses) {
-				qTreeDisc.prettyPrintParseTree(p);
+				qTreeDisc.printParseTreeDetails(p);
 			}
 
 			return null;

@@ -29,14 +29,14 @@ public class QTreeDescriptor {
 			Parse[] topParses = ParserTool.parseLine(input, parser, 1);
 
 			for (Parse p : topParses) {
-				prettyPrintParseTree(p);
+				printParseTreeDetails(p);
 			}
 
 			return topParses;
 		}
 	}
 
-	public void prettyPrintParseTree(Parse node) {
+	public void printParseTreeDetails(Parse node) {
 
 		displayNodeParams(node);
 		parseParentProperties(node);
@@ -84,7 +84,7 @@ public class QTreeDescriptor {
 		System.out.println("Child count : " + node.getChildCount());
 		System.out.println("Child Nodes : ");
 		for (Parse p : node.getChildren()) {
-			prettyPrintParseTree(p);
+			printParseTreeDetails(p);
 		}
 	}
 
@@ -92,7 +92,7 @@ public class QTreeDescriptor {
 		System.out.println("Tag Nodes : ");
 		node.show();
 		for (Parse p : node.getTagNodes()) {
-			prettyPrintParseTree(p);
+			printParseTreeDetails(p);
 		}
 	}
 
