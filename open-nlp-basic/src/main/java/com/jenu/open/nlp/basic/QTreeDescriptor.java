@@ -3,6 +3,7 @@ package com.jenu.open.nlp.basic;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
+import java.util.Scanner;
 
 import opennlp.tools.cmdline.parser.ParserTool;
 import opennlp.tools.parser.Parse;
@@ -15,7 +16,10 @@ public class QTreeDescriptor {
 	public static void main(String[] args) {
 		try {
 			QTreeDescriptor qTreeDesc = new QTreeDescriptor();
-			qTreeDesc.parseQtree("Show the certificates which are disabled");
+			// qTreeDesc.parseQtree("Show the certificates which are disabled");
+
+			String s = qTreeDesc.getUserInput();
+			qTreeDesc.parseQtree(s);
 
 		} catch (Exception e) {
 			System.err.println(e);
@@ -117,6 +121,12 @@ public class QTreeDescriptor {
 
 	public InputStream getModel(String model) {
 		return getClass().getResourceAsStream("/models/" + model);
+	}
+
+	public String getUserInput() {
+		try (Scanner in = new Scanner(System.in)) {
+			return in.nextLine();
+		}
 	}
 
 }

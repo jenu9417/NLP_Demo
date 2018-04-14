@@ -2,6 +2,7 @@ package com.jenu.open.nlp.basic;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Scanner;
 
 import opennlp.tools.cmdline.parser.ParserTool;
 import opennlp.tools.parser.Parse;
@@ -14,7 +15,10 @@ public class QTreePrinter {
 	public static void main(String[] args) {
 		try {
 			QTreePrinter qTreePrinter = new QTreePrinter();
-			qTreePrinter.parseQtree("Show the certificates which are disabled");
+			// qTreePrinter.parseQtree("Show the certificates which are
+			// disabled");
+			String s = qTreePrinter.getUserInput();
+			qTreePrinter.parseQtree(s);
 
 		} catch (Exception e) {
 			System.err.println(e);
@@ -86,6 +90,12 @@ public class QTreePrinter {
 
 	public InputStream getModel(String model) {
 		return getClass().getResourceAsStream("/models/" + model);
+	}
+
+	public String getUserInput() {
+		try (Scanner in = new Scanner(System.in)) {
+			return in.nextLine();
+		}
 	}
 
 }
